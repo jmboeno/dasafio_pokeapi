@@ -1,0 +1,26 @@
+.container-buttonbar{
+  background: #212121;
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.container-buttonbar div{
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: .5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-buttonbar div a{
+  padding: 0.5em;
+  width: 5em;
+  border: 1px solid #fff;
+  border-radius: 1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
