@@ -1,79 +1,41 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import { findByText, fireEvent, render, screen } from '@testing-library/react';
+import { fireEvent, prettyDOM, render, screen } from '@testing-library/react';
 import App from '../App';
 import { Provider } from 'react-redux';
 import { createTestStore } from '../ultils/testStore';
 
 let store;
-describe('Tests for App container', () => {
+describe('Tests for <App/> component', () => {
   beforeEach(() => {
     store = createTestStore();
   });
 
-  it('Should render a list', async () => {
-    const { findByRole } = render(
+  it('Should render a App container', () => {
+    const { getByTestId } = render(
       <Provider store={store}>
         <MemoryRouter>
           <App />
         </MemoryRouter>
       </Provider>,
     );
-    const listElement = await findByRole('list');
-    expect(listElement).toBeTruthy();
-  });
-
-  it('Should render a list with twenty items', async () => {
-    const { findAllByRole } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
-      </Provider>,
-    );
-    const listItemsElement = await findAllByRole('listitem');
-    expect(listItemsElement.length).toBe(20);
-  });
-
-  it('Should render only the button "next"', async () => {
-    const { findByRole } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
-      </Provider>,
-    );
-    const linkNextElement = await findByRole('link', { name: /próximo/i });
-    expect(linkNextElement).toBeTruthy();
+    const appContainerElement = getByTestId('app-container');
+    expect(appContainerElement).toBeTruthy();
   });
 
   it('Should render the next range in the list', async () => {
-    const { findByRole } = render(
+    render(
       <Provider store={store}>
         <MemoryRouter>
           <App />
         </MemoryRouter>
       </Provider>,
     );
-    const linkNextElement = await findByRole('link', { name: /próximo/i });
-    fireEvent.click(linkNextElement);
-    const listItemsElement = await screen.findAllByRole('listitem');
-    expect(listItemsElement.length).toBe(20);
-  });
-
-  it('Should render only the button "previous"', async () => {
-    const { findByRole } = render(
-      <Provider store={store}>
-        <MemoryRouter>
-          <App />
-        </MemoryRouter>
-      </Provider>,
-    );
-    const linkNextElement = await findByRole('link', { name: /próximo/i });
-    fireEvent.click(linkNextElement);
-    const linkPreviousElement = screen.findByRole('link', {
-      name: /voltar/i,
+    const linkNextElement = await screen.findByRole('link', {
+      name: /próximo/i,
     });
-    expect(linkPreviousElement).toBeTruthy();
+    fireEvent.click(linkNextElement);
+    const list = await screen.findByTestId('list-container');
+    console.log(prettyDOM(list));
   });
 });
