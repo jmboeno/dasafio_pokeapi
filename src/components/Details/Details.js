@@ -28,7 +28,7 @@ const Details = () => {
 
   const getDetails = () => {
     return (
-      <div style={{ padding: '1em' }}>
+      <div style={{ padding: '1em' }} data-testid="content-details">
         <div className="content">
           <div className="info grid mb">
             <div className="card-info">
@@ -41,12 +41,14 @@ const Details = () => {
                       ? pokemon.sprites.front_default
                       : pokemon.sprites.back_default
                   }
+                  data-testid="image"
                 />
                 <div>
                   <button
                     onClick={() => {
                       changeImage();
                     }}
+                    data-testid="btn-change-image"
                   >
                     {isFront ? 'Ver Costas' : 'Ver Frente'}
                   </button>
@@ -113,7 +115,7 @@ const Details = () => {
   };
 
   return (
-    <div className="container-details">
+    <div className="details-container" data-testid="details-container">
       {pokemon && getDetails()}
       <ButtonBar previous={false} next={false} loadPage={false} back={true} />
     </div>

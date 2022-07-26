@@ -1,4 +1,4 @@
-.container-list{
+.list-container{
   background: #c52018;
   position: absolute;
   margin: 0;
@@ -6,19 +6,19 @@
   width: 100%;
 }
 
-.container-list ul{
+.list-container ul{
   list-style: none;
   margin: 0;
   padding: 1em;
 }
 
-.container-list ul li{
+.list-container ul li{
   margin-bottom: 1em;
   width: 100%;
 }
 
 @media only screen and (min-width: 700px) {
-  .container-list ul{
+  .list-container ul{
     display: flex;
     flex-flow: wrap;
     gap: 1em;
@@ -27,11 +27,11 @@
     max-width: 1000px;
   }
 
-  .container-list ul li{
+  .list-container ul li{
     width: 11em;
   }
 
-  .container-list ul li{
+  .list-container ul li{
     margin-bottom: 0;
   }
 }

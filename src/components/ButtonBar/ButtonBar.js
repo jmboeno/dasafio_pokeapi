@@ -7,15 +7,25 @@ import './ButtonBar.css';
 const ButtonBar = ({ previous, next, loadPage, back }) => {
   const dispatch = useDispatch();
 
+  const handleClick = (e) => {
+    if (e == previous) {
+      loadPage(previous);
+      dispatch(setPage(previous));
+    }
+    if (e == next) {
+      loadPage(next);
+      dispatch(setPage(next));
+    }
+  };
+
   return (
-    <div className="container-buttonbar">
+    <div className="buttonbar-container" data-testid="buttonbar-container">
       <div>
         {previous && (
           <Link
             to="/"
             onClick={() => {
-              loadPage(previous);
-              dispatch(setPage(previous));
+              handleClick(previous);
             }}
           >
             Voltar
@@ -25,8 +35,7 @@ const ButtonBar = ({ previous, next, loadPage, back }) => {
           <Link
             to="/"
             onClick={() => {
-              loadPage(next);
-              dispatch(setPage(next));
+              handleClick(next);
             }}
             style={{ marginLeft: 'auto' }}
           >

@@ -1,4 +1,4 @@
-.container-card{
+.card-container{
   background: #eeeeff;
     border: none;
     border-radius: 1em;
@@ -7,16 +7,16 @@
     padding: 1em;
 }
 
-.container-card img{
+.card-container img{
   margin: 0 auto;
 }
 
-.container-card span{
+.card-container span{
   color: #868080;
   text-align: left;
 }
 
-.container-card h2{
+.card-container h2{
   color: #43454d;
   margin: 0;
   text-align: center;

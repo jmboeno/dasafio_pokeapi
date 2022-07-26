@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { loadData } from '../../redux/actions';
 import ButtonBar from '../ButtonBar/ButtonBar';
 import './List.css';
-
 import Card from '../Card/Card';
 
 const List = () => {
@@ -28,6 +27,7 @@ const List = () => {
       pokemons.results.map((pokemon) => (
         <li key={pokemon.name}>
           <Card
+            id={pokemon.url.split('/')[6]}
             url={pokemon.url}
             name={pokemon.name}
             img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
@@ -40,7 +40,7 @@ const List = () => {
   };
 
   return (
-    <div className="container-list">
+    <div className="list-container" data-testid="list-container">
       <ul>{pokemons && getList()}</ul>
       <ButtonBar
         previous={data.previous}

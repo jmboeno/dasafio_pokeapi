@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { setPokemon } from '../../redux/actions';
 import './Card.css';
 
-const Card = ({ url, name, img }) => {
+const Card = ({ id, url, name, img }) => {
   const dispatch = useDispatch();
 
   return (
@@ -13,9 +13,10 @@ const Card = ({ url, name, img }) => {
         dispatch(setPokemon(url));
       }}
       to="/details"
+      data-testid="card-link"
     >
-      <div className="container-card">
-        <span>#{url.split('/')[6]}</span>
+      <div className="card-container">
+        <span>#{id}</span>
         <h2>{name}</h2>
         <img src={img} />
       </div>

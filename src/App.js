@@ -5,7 +5,7 @@ import Details from './components/Details/Details';
 
 const App = () => {
   return (
-    <div className="App">
+    <div className="App" data-testid="app-container">
       <Routes>
         <Route path="/" element={<List />} />
         <Route path="details" element={<Details />} />
